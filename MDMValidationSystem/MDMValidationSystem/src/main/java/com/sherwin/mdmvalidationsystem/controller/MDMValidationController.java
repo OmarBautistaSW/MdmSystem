@@ -19,4 +19,9 @@ public class MDMValidationController {
 		model.addAttribute("region",region.toUpperCase());
 		return "ItemWFValidation";
 	}
+	
+	@RequestMapping(path={"/ValidateItems"},method=RequestMethod.POST)
+	public String validateItems (@ModelAttribute("items") String items, Model model){
+		return "ItemWFValidation";
+	}
 }
