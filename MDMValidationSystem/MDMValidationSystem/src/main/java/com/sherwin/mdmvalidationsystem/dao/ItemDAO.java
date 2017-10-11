@@ -6,6 +6,6 @@ import com.sherwin.mdmvalidationsystem.model.Item;
 
 public interface ItemDAO {
 	
-	public List<Item> listItems();
+	public List<Item> listItems(String items);
 
 }

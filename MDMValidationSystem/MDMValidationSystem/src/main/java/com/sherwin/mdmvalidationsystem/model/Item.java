@@ -16,12 +16,12 @@ public class Item {
 	private String changeOrderStatus;
 	private String workflowPhase;
 	private String workflowStatus;
-	private String stepNumber;
+	private int stepNumber;
 	private String groupName;
 	private String dateRecived;
 	private String repliedDate;
-	private String daysInGroup;
-	private String workflowTotalDays;
+	private Double daysInGroup;
+	private Double workflowTotalDays;
 	
 	public Item(){
 	}
@@ -30,9 +30,9 @@ public class Item {
 			String icc, String template, String status, String type,
 			String createdBy, String creationDate, String changeOrder,
 			String changeOrderStatus, String workflowPhase,
-			String workflowStatus, String stepNumber, String groupName,
-			String dateRecived, String repliedDate, String daysInGroup,
-			String workflowTotalDays) {
+			String workflowStatus, int stepNumber, String groupName,
+			String dateRecived, String repliedDate, Double daysInGroup,
+			Double workflowTotalDays) {
 		super();
 		this.org = org;
 		this.orgName = orgName;
@@ -168,11 +168,11 @@ public class Item {
 		this.workflowStatus = workflowStatus;
 	}
 
-	public String getStepNumber() {
+	public int getStepNumber() {
 		return stepNumber;
 	}
 
-	public void setStepNumber(String stepNumber) {
+	public void setStepNumber(int stepNumber) {
 		this.stepNumber = stepNumber;
 	}
 
@@ -200,19 +200,19 @@ public class Item {
 		this.repliedDate = repliedDate;
 	}
 
-	public String getDaysInGroup() {
+	public Double getDaysInGroup() {
 		return daysInGroup;
 	}
 
-	public void setDaysInGroup(String daysInGroup) {
+	public void setDaysInGroup(Double daysInGroup) {
 		this.daysInGroup = daysInGroup;
 	}
 
-	public String getWorkflowTotalDays() {
+	public Double getWorkflowTotalDays() {
 		return workflowTotalDays;
 	}
 
-	public void setWorkflowTotalDays(String workflowTotalDays) {
+	public void setWorkflowTotalDays(Double workflowTotalDays) {
 		this.workflowTotalDays = workflowTotalDays;
 	}
 }

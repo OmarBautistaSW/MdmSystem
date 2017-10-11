@@ -22,7 +22,8 @@ dependencies {
 	compile group: 'javax.servlet', name: 'jstl', version: '1.2'
 	compile name: 'ojdbc7'
 	compile group: 'cglib', name: 'cglib-nodep', version: '2.2.2'	
-	compile group: 'org.springframework', name: 'spring-jdbc', version: '4.3.7.RELEASE'	
+	compile group: 'org.springframework', name: 'spring-jdbc', version: '4.3.7.RELEASE'
+	compile group: 'org.springframework', name: 'spring-core', version: '4.3.7.RELEASE'	
 }
 
 //For Eclipse IDE only
