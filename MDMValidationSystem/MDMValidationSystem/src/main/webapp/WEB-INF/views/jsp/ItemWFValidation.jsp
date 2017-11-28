@@ -209,6 +209,7 @@
 			</div>
 		</c:forEach>
 	</div>
+	<div class="footer">Copyright Sherwin-Williams - Developed by MDM International - All rights reserved</div>
 </body>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
