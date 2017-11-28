@@ -47,8 +47,7 @@ public class WebConfig extends WebMvcConfigurerAdapter{
 		ds.setDriverClassName(env.getProperty("database-driver"));
 		ds.setUrl(env.getProperty("database-url"));
 		ds.setUsername(env.getProperty("database-user"));
-		ds.setPassword(env.getProperty("database-password"));
-		
+		ds.setPassword(env.getProperty("database-password"));		
 		return ds;
 	}
 	

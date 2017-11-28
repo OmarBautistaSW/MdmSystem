@@ -1,83 +1,31 @@
 package com.sherwin.mdmvalidationsystem.model;
 
-public class Item {
+import java.sql.Date;
+import java.util.Map;
 
-	private String org;
-	private String orgName;
-	private String number;
+public class Item {
+	
+	private String item;
 	private String description;
-	private String icc;
+	private String ICC;
 	private String template;
 	private String status;
 	private String type;
+	private Date creationDate;
 	private String createdBy;
-	private String creationDate;
-	private String changeOrder;
-	private String changeOrderStatus;
-	private String workflowPhase;
-	private String workflowStatus;
-	private int stepNumber;
-	private String groupName;
-	private String dateRecived;
-	private String repliedDate;
-	private Double daysInGroup;
-	private Double workflowTotalDays;
-	
+	private String isComplete;
+	private Map<Integer, ChangeOrder> orgMap;
+	private Map<String,String> approveGroup;
+
 	public Item(){
 	}
 
-	public Item(String org, String orgName, String number, String description,
-			String icc, String template, String status, String type,
-			String createdBy, String creationDate, String changeOrder,
-			String changeOrderStatus, String workflowPhase,
-			String workflowStatus, int stepNumber, String groupName,
-			String dateRecived, String repliedDate, Double daysInGroup,
-			Double workflowTotalDays) {
-		super();
-		this.org = org;
-		this.orgName = orgName;
-		this.number = number;
-		this.description = description;
-		this.icc = icc;
-		this.template = template;
-		this.status = status;
-		this.type = type;
-		this.createdBy = createdBy;
-		this.creationDate = creationDate;
-		this.changeOrder = changeOrder;
-		this.changeOrderStatus = changeOrderStatus;
-		this.workflowPhase = workflowPhase;
-		this.workflowStatus = workflowStatus;
-		this.stepNumber = stepNumber;
-		this.groupName = groupName;
-		this.dateRecived = dateRecived;
-		this.repliedDate = repliedDate;
-		this.daysInGroup = daysInGroup;
-		this.workflowTotalDays = workflowTotalDays;
+	public String getItem() {
+		return item;
 	}
 
-	public String getOrg() {
-		return org;
-	}
-
-	public void setOrg(String org) {
-		this.org = org;
-	}
-
-	public String getOrgName() {
-		return orgName;
-	}
-
-	public void setOrgName(String orgName) {
-		this.orgName = orgName;
-	}
-
-	public String getNumber() {
-		return number;
-	}
-
-	public void setNumber(String number) {
-		this.number = number;
+	public void setItem(String item) {
+		this.item = item;
 	}
 
 	public String getDescription() {
@@ -88,12 +36,12 @@ public class Item {
 		this.description = description;
 	}
 
-	public String getIcc() {
-		return icc;
+	public String getICC() {
+		return ICC;
 	}
 
-	public void setIcc(String icc) {
-		this.icc = icc;
+	public void setICC(String iCC) {
+		ICC = iCC;
 	}
 
 	public String getTemplate() {
@@ -120,6 +68,14 @@ public class Item {
 		this.type = type;
 	}
 
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
+
 	public String getCreatedBy() {
 		return createdBy;
 	}
@@ -128,91 +84,28 @@ public class Item {
 		this.createdBy = createdBy;
 	}
 
-	public String getCreationDate() {
-		return creationDate;
+	public Map<Integer, ChangeOrder> getOrgMap() {
+		return orgMap;
 	}
 
-	public void setCreationDate(String creationDate) {
-		this.creationDate = creationDate;
+	public void setOrgMap(Map<Integer, ChangeOrder> orgMap) {
+		this.orgMap = orgMap;
 	}
 
-	public String getChangeOrder() {
-		return changeOrder;
+	public String getIsComplete() {
+		return isComplete;
 	}
 
-	public void setChangeOrder(String changeOrder) {
-		this.changeOrder = changeOrder;
+	public void setIsComplete(String isComplete) {
+		this.isComplete = isComplete;
 	}
 
-	public String getChangeOrderStatus() {
-		return changeOrderStatus;
+	public Map<String, String> getApproveGroup() {
+		return approveGroup;
 	}
 
-	public void setChangeOrderStatus(String changeOrderStatus) {
-		this.changeOrderStatus = changeOrderStatus;
+	public void setApproveGroup(Map<String, String> approveGroup) {
+		this.approveGroup = approveGroup;
 	}
-
-	public String getWorkflowPhase() {
-		return workflowPhase;
-	}
-
-	public void setWorkflowPhase(String workflowPhase) {
-		this.workflowPhase = workflowPhase;
-	}
-
-	public String getWorkflowStatus() {
-		return workflowStatus;
-	}
-
-	public void setWorkflowStatus(String workflowStatus) {
-		this.workflowStatus = workflowStatus;
-	}
-
-	public int getStepNumber() {
-		return stepNumber;
-	}
-
-	public void setStepNumber(int stepNumber) {
-		this.stepNumber = stepNumber;
-	}
-
-	public String getGroupName() {
-		return groupName;
-	}
-
-	public void setGroupName(String groupName) {
-		this.groupName = groupName;
-	}
-
-	public String getDateRecived() {
-		return dateRecived;
-	}
-
-	public void setDateRecived(String dateRecived) {
-		this.dateRecived = dateRecived;
-	}
-
-	public String getRepliedDate() {
-		return repliedDate;
-	}
-
-	public void setRepliedDate(String repliedDate) {
-		this.repliedDate = repliedDate;
-	}
-
-	public Double getDaysInGroup() {
-		return daysInGroup;
-	}
-
-	public void setDaysInGroup(Double daysInGroup) {
-		this.daysInGroup = daysInGroup;
-	}
-
-	public Double getWorkflowTotalDays() {
-		return workflowTotalDays;
-	}
-
-	public void setWorkflowTotalDays(Double workflowTotalDays) {
-		this.workflowTotalDays = workflowTotalDays;
-	}
+	
 }
