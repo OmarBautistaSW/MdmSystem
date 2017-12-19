@@ -16,6 +16,10 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 import com.sherwin.mdmvalidationsystem.dao.ItemDAO;
+import com.sherwin.mdmvalidationsystem.dao.ItemDAOAPAC;
+import com.sherwin.mdmvalidationsystem.dao.ItemDAOAPACImp;
+import com.sherwin.mdmvalidationsystem.dao.ItemDAOEMEA;
+import com.sherwin.mdmvalidationsystem.dao.ItemDAOEMEAImp;
 import com.sherwin.mdmvalidationsystem.dao.ItemDAOImp;
 
 @Configuration
@@ -40,14 +44,31 @@ public class WebConfig extends WebMvcConfigurerAdapter{
 		resolver.setSuffix(".jsp");
 		return resolver;
 	}
+
+	//EMEA
+	@Bean
+	public DataSource getDataSourceEMEA(){
+		DriverManagerDataSource dsemea = new DriverManagerDataSource();
+		dsemea.setDriverClassName(env.getProperty("database-driver"));
+		dsemea.setUrl(env.getProperty("database-url-emea"));
+		dsemea.setUsername(env.getProperty("database-user-emea"));
+		dsemea.setPassword(env.getProperty("database-password-emea"));		
+		return dsemea;
+	}
 	
+	@Bean
+	public ItemDAOEMEA getItemDAOEMEA(){
+		return new ItemDAOEMEAImp(getDataSourceEMEA());
+	}
+	
+	//LATAM - BR
 	@Bean
 	public DataSource getDataSource(){
 		DriverManagerDataSource ds = new DriverManagerDataSource();
 		ds.setDriverClassName(env.getProperty("database-driver"));
-		ds.setUrl(env.getProperty("database-url"));
-		ds.setUsername(env.getProperty("database-user"));
-		ds.setPassword(env.getProperty("database-password"));		
+		ds.setUrl(env.getProperty("database-url-lacg"));
+		ds.setUsername(env.getProperty("database-user-lacg"));
+		ds.setPassword(env.getProperty("database-password-lacg"));		
 		return ds;
 	}
 	
@@ -55,4 +76,21 @@ public class WebConfig extends WebMvcConfigurerAdapter{
 	public ItemDAO getItemDAO(){
 		return new ItemDAOImp(getDataSource());
 	}
+	
+	
+	//APAC
+	@Bean
+	public DataSource getDataSourceAPAC(){
+		DriverManagerDataSource dsapac = new DriverManagerDataSource();
+		dsapac.setDriverClassName(env.getProperty("database-driver"));
+		dsapac.setUrl(env.getProperty("database-url-apac"));
+		dsapac.setUsername(env.getProperty("database-user-apac"));
+		dsapac.setPassword(env.getProperty("database-password-apac"));		
+		return dsapac;
+	}
+	
+	@Bean
+	public ItemDAOAPAC getItemDAOAPAC(){
+		return new ItemDAOAPACImp(getDataSourceAPAC());
+	}	
 }

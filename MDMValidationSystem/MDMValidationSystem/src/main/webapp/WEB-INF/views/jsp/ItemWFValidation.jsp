@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Item WF Status ${sessionScope.region}</title>
+<title>Item WF Status ${region}</title>
 <spring:url value="/resources/core/css/mdmvalidation.css" var="coreCss" />
 <spring:url value="/resources/core/css/bootstrap.min.css" var="bootstrapCss" /> 
 <link href="${bootstrapCss}" rel="stylesheet" />
@@ -12,21 +12,23 @@
 <link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/ui-darkness/jquery-ui.min.css" rel="stylesheet">
 <link href="<c:url value="/resources/core/images/logosw.ico" />" rel="shortcut icon" type="image/x-icon" />
 </head>
-<body>
+<body class="lacg">
 	<header>
 		<table>
 			<tr>
 				<td width="20%"><img src="<c:url value="/resources/core/images/logo.png" />"/></td>
-				<td width="60%" class="center"><h1>LACG - Oracle PIM Item Workflow Status</h1></td>
+				<td width="60%" class="center"><h1>${region } - Oracle PIM Item Workflow Status</h1></td>
 				<td width="20%" class="tdStatus"><img src="<c:url value="/resources/core/images/green.png" />" class="imgStatus">Complete Change Order</td>
 			</tr>
 			<tr>
-				<td><span id="existItems" style="display:none">${existItems }</span></td>
+				<td><span id="existItems" style="display:none">${existItems }</span><span id="region" style="display:none">${region }</span></td>
 				<td class="center">
-					<form method ="post" action="ValidateItems">
+					<form method ="post" action="ValidateItems" name="SearchForm">
 						<input type="text" name="items" placeholder="Type Item(s) separate with commas...">
 						<input type ="submit" class="button" value="Search">
 						<input type ="reset" class="button" value="Clear All">
+						<div class="errorSearch"></div>
+						<input type="hidden" name="region" value=${region }>
 					</form>
 				</td>
 				<td class="tdStatus"><img src="<c:url value="/resources/core/images/red.png" />" class="imgStatus">Incomplete Change Order</td>
@@ -215,5 +217,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
 <spring:url value="/resources/core/js/mdmvalidation.js" var="mdmvalidationJs"/>
 <script src="${mdmvalidationJs }"></script>
+<spring:url value ="/resources/core/js/jquery.validate.min.js" var="jqueryValidate"/>
+<script src="${jqueryValidate }"></script>
 </body>
 </html>

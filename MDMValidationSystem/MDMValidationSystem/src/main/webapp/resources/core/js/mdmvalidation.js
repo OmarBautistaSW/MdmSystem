@@ -1,76 +1,70 @@
 function showInfoItem(item, id){
-	$('#divButton'+item).show();
-	$('#divWithCO'+item).show();
-//	hideElements(item);
+	$(document.getElementById("divButton" + item)).show();
+	$(document.getElementById("divWithCO" + item)).show();
 	changeImgButton(id);
 }
 
-function closeInfoItem(item,id){
-	$('#divButton'+item).hide();
-	$('#divWithCO'+item).hide();
-	$('#divWithoutCO'+item).hide();
+function closeInfoItem(item,id){;
+	$(document.getElementById("divButton" + item)).hide();
+	$(document.getElementById("divWithCO" + item)).hide();
+	$(document.getElementById("divWithoutCO" + item)).hide();
 	changeImgButton(id);
 }
 
 function showOrgDetail(item,org,id){
-	$('.detalle'+item+org).show();
+	var clase = "detalle" + item + org;
+	$(document.getElementsByClassName(clase)).show();
 	changeImgButton(id);
 }
 
 function closeOrgDetail(item,org,id){
-	$('.detalle'+item+org).hide();
+	$(document.getElementsByClassName("detalle"+item+org)).hide();
 	changeImgButton(id);
 }
 
-function hideElements(item){
-	$("[class^='detalle"+item+"']").hide();
-	$("[class^='tr'").hide();
-}
-
 function changeImgButton(id){
-	var idStr = id;
-	if(idStr.indexOf("Plus") >= 0){
-		$('#'+id).hide();
-		var idHide = idStr.substring(0,idStr.indexOf("Plus")) + "Minus";
-		$('#'+idHide).show();
+	if(id.indexOf("Plus") >= 0){
+		$(document.getElementById(id)).hide();
+		var idHide = id.substring(0,id.indexOf("Plus")) + "Minus";
+		$(document.getElementById(idHide)).show();
 	}else{
-		$('#'+id).hide();
-		var idShow = idStr.substring(0,idStr.indexOf("Minus")) + "Plus";
-		$('#'+idShow).show();
-	}
-}
-
-function showTabItems(items){
-	if(items == null){
-		$('#itemsContainer').hide();
-	}else{
-		$('#itemsContainer').hide();
+		$(document.getElementById(id)).hide();
+		var idShow = id.substring(0,id.indexOf("Minus")) + "Plus";
+		$(document.getElementById(idShow)).show();
 	}
 }
 
 function showHeader(){
-	var existItem = $('#existItems').text()
+	var existItem = $('#existItems').text();
+	var region = $('#region').text();
 	if(existItem == "N"){
 		$('#divHeaderTable').hide();
 	}else{
 		$('#divHeaderTable').show();
+	}
+	if (region != 'LACG'){
+		if(region == 'EMEA'){
+			$("body").removeClass('lacg').addClass('emea');
+		}else{
+			$("body").removeClass('lacg').addClass('apac');
+		}
 	}
 }
 
 window.onload = showHeader();
 
 function showCO(item){
-	$('#divWithoutCO'+item).hide();
-	$('#divWithCO'+item).show();
+	$(document.getElementById("divWithoutCO" + item)).hide();
+	$(document.getElementById("divWithCO" + item)).show();
 }
 
 function showNCO(item){
-	$('#divWithCO'+item).hide();
-	$('#divWithoutCO'+item).show();
+	$(document.getElementById("divWithCO" + item)).hide();
+	$(document.getElementById("divWithoutCO" + item)).show();
 }
 
 function showApprovalNames(item, org, seq){
-	$("#span"+item+org+seq).dialog({
+	$(document.getElementById("span"+item+org+seq)).dialog({
 		title: "People who can approve",
 		modal: true,
 		resizable: false,
@@ -81,3 +75,19 @@ function showApprovalNames(item, org, seq){
 		}
 	});
 }
+
+$(function(){
+	$("form[name='SearchForm'").validate({
+		rules: {
+			items: "required"
+		},
+		messages: {
+			items: "Please enter an item"
+		},
+		errorElement : 'div',
+		errorLabelContainer:'.errorSearch',
+		submitHandler: function(form){
+			form.submit();
+		}
+	})
+})

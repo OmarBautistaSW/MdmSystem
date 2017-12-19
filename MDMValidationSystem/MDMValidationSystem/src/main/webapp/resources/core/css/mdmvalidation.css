@@ -1,9 +1,10 @@
 header{
 	background-color: #f2f2f2;
 }
-body{
-	background-image: url('../images/fondo.png');
-}
+
+.lacg{background: url('../images/fondo_lacg.png') no-repeat left top;}
+.emea{background: url('../images/fondo_emea.png') no-repeat left top;}
+.apac{background: url('../images/fondo_apac.png') no-repeat left top;}
 
 .center{
 	text-align:center;
@@ -75,6 +76,14 @@ input[type=reset]{
 	color:#D8000C;
 	background-color: #FFBABA;
 	display: inline-block;
+	padding: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 17px;
+	border-radius: 5px;
+}
+
+.errorSearch{
+	color:#D8000C;
 	padding: 5px;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 17px;
